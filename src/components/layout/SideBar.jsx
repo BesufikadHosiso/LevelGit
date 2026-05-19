@@ -65,7 +65,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
         <nav 
           className={`
-            fixed top-16 left-0 bottom-0 w-64 bg-gray-800 border-r border-gray-700 shadow-xl p-4
+            fixed top-16 left-0 bottom-0 w-64 bg-surface border-r border-gray-700 shadow-xl p-4
             transition-transform duration-300 ease-in-out
             ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
           `}

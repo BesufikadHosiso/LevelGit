@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
-import Today from './pages/Today'
+import Focus from './pages/Focus'
 import Logs from './pages/Logs'
 import Path from './pages/Path'
 import Stats from './pages/Stats'
@@ -13,7 +13,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/today" element={<Today />} />
+        <Route path="/focus" element={<Focus />} />
         <Route path="/path" element={<Path />} />
         <Route path="/log" element={<Logs />} />
         <Route path="/stats" element={<Stats />} />

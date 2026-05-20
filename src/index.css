@@ -11,6 +11,20 @@
   --color-muted: #8b90a0;
   --color-ghost: #4a4f5e;
 
+  /* Derived / tokens */
+  --color-surface-10: rgba(15,17,23,0.1);
+  --color-surface-20: rgba(15,17,23,0.18);
+  --color-streak-10: rgba(110,231,183,0.1);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 6px 18px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.55);
+
+  /* Radii & spacing */
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
+
   /* Font Families */
   --font-display: "Syne", sans-serif;
   --font-body: "DM Sans", sans-serif;
@@ -23,3 +37,26 @@
     color: #e8eaf0;
   }
 }
+
+/* Utility tokens for consistent styling across components */
+.bg-surface { background-color: var(--color-surface); }
+.bg-surface-10 { background-color: var(--color-surface-10); }
+.bg-surface-20 { background-color: var(--color-surface-20); }
+.bg-streak { background-color: var(--color-streak); }
+.bg-streak-10 { background-color: var(--color-streak-10); }
+.text-streak { color: var(--color-streak); }
+.text-night { color: var(--color-night); }
+.text-muted { color: var(--color-muted); }
+.border-border { border-color: var(--color-border); }
+.border-streak { border-color: var(--color-streak); }
+.rounded-card { border-radius: var(--radius-card); }
+.rounded-pill { border-radius: var(--radius-pill); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.btn-primary { background-color: var(--color-streak); color: #000; }
+.btn-primary:hover { filter: brightness(0.95); }
+
+/* Small helper to hide native scrollbars while remaining scrollable */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

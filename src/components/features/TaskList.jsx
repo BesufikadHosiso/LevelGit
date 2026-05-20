@@ -47,7 +47,9 @@ const TaskList = () => {
     };
 
     return (
-        <div className='p-4 bg-[#1e1e2f] rounded-lg'>
+        <div className='p-3 bg-surface rounded-card mt-6'>
+        <h1 className='text-sm font-light italic mb-4 text-white border-l-4 border-streak pl-3 opacity-70'>Success is not final, failure is not fatal: it is the courage to continue that counts.</h1>
+        <div className='p-3 bg-surface rounded-card'>
             <div className='mb-6'>
                 {showNewTaskInput ? (
                     <div className='flex items-center space-x-2 animate-in fade-in slide-in-from-top-2'>
@@ -83,40 +85,40 @@ const TaskList = () => {
 
             {state.tasks.length > 0 && (
                 <div className='mb-6'>
-                    <div className='relative h-3 bg-gray-700 rounded-full overflow-hidden'>
+                    <div className='relative h-3 bg-surface-20 border border-border rounded-full overflow-hidden shadow-inner'>
                         <div
-                            className='absolute top-0 left-0 h-full bg-green-500 transition-all duration-500 ease-out'
+                            className='absolute top-0 left-0 h-full bg-streak transition-all duration-500 ease-out'
                             style={{ width: `${(state.tasks.filter(task => task.done).length / state.tasks.length) * 100}%` }}
                         ></div>
                     </div>
-                    <p className='text-sm text-gray-400 mt-2 text-right'>
+                    <p className='text-sm text-muted mt-2 text-right'>
                         {state.tasks.filter(task => task.done).length} of {state.tasks.length} tasks completed
                     </p>
                 </div>
             )}
 
             {state.tasks.length === 0 ? (
-                <div className='text-center text-[#e8eaf0]'>
-                    <p className='text-lg mb-4'>No tasks yet. Add your first task!</p>
+                <div className='text-center text-white'>
+                    <p className='text-base mb-4'>No tasks yet. Add your first task!</p>
                 </div>
-            ) : (
+                ) : (
                 <ul className='space-y-2'>
                     {state.tasks.map((task) => (
-                        <li key={task.id} className={`flex items-center justify-between p-4 rounded-xl transition-all duration-500 ${task.done ? 'bg-[#2d2d44] border-l-4 border-green-500 shadow-inner' : 'bg-[#252538] border-l-4 border-transparent hover:bg-[#2a2a3f]'}`}>
-                            <div className='flex items-center space-x-4 min-w-0 flex-1 mr-4'>
+                        <li key={task.id} className={`flex items-center justify-between p-3 rounded-card transition-all duration-500 ${task.done ? 'bg-surface-10 border-l-4 border-streak shadow-inner' : 'bg-surface-20 border-l-4 border-transparent hover:bg-surface-10'}`}>
+                            <div className='flex items-center space-x-3 min-w-0 flex-1 mr-3'>
                                 <button
                                     onClick={() => dispatch({ type: 'TOGGLE_TASK', payload: task.id })}
-                                    className={`relative flex items-center justify-center min-w-[24px] w-6 h-6 rounded-lg border-2 transition-all duration-500 transform active:scale-75 ${
+                                    className={`relative flex items-center justify-center w-5 h-5 rounded-lg border-2 transition-all duration-500 transform active:scale-75 ${
                                         task.done 
-                                            ? 'bg-green-500 border-green-500 rotate-0 scale-110' 
-                                            : 'border-gray-500 hover:border-green-400 -rotate-90'
+                                            ? 'bg-streak border-streak rotate-0 scale-110' 
+                                            : 'border-border hover:border-streak -rotate-90'
                                     }`}
                                 >
                                     <Check 
-                                        size={14} 
+                                        size={12} 
                                         className={`text-white transition-all duration-300 ${task.done ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`} 
                                     />
-                                    {task.done && <span className='absolute inset-0 rounded-lg bg-green-500 animate-ping opacity-40' />}
+                                    {task.done && <span className='absolute inset-0 rounded-lg bg-streak animate-ping opacity-40' />}
                                 </button>
                                 {editingId === task.id ? (
                                     <Input 
@@ -129,12 +131,12 @@ const TaskList = () => {
                                         autoFocus
                                     />
                                 ) : (
-                                    <span className={`flex-grow min-w-0 truncate text-lg font-medium transition-all duration-500 ${task.done ? 'line-through text-gray-500 opacity-60' : 'text-[#e8eaf0]'}`}>
+                                    <span className={`grow min-w-0 truncate text-sm font-medium transition-all duration-500 ${task.done ? 'line-through text-muted opacity-60' : 'text-white'}`}>
                                         {task.text}
                                     </span>
                                 )}
                             </div>
-                            <div className='flex-shrink-0 space-x-2'>
+                            <div className='shrink-0 space-x-2'>
                                 {editingId === task.id ? (
                                     <Button variant='primary' onClick={() => handleSaveEdit(task.id)}>Save</Button>
                                 ) : (
@@ -176,6 +178,7 @@ const TaskList = () => {
             >
                 This will permanently remove all tasks from your list. This is a destructive action.
             </Modal>
+        </div>
         </div>
     )
 }

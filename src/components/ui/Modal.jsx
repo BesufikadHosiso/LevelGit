@@ -23,14 +23,14 @@ const Modal = ({ isOpen, onClose, title, children, variant = 'info', confirmText
     const variants = {
         info: {
             icon: <Info className="text-streak" size={24} />,
-            header: 'text-[#e8eaf0]',
-            border: 'border-streak/20',
+            header: 'text-white',
+            border: 'border-border',
             btn: 'primary'
         },
         warning: {
             icon: <AlertTriangle className="text-red-400" size={24} />,
             header: 'text-red-400',
-            border: 'border-red-500/20',
+            border: 'border-border',
             btn: 'danger'
         }
     };
@@ -43,11 +43,11 @@ const Modal = ({ isOpen, onClose, title, children, variant = 'info', confirmText
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200" onClick={onClose} />
             
             {/* Modal Container */}
-            <div className={`relative w-full max-w-md bg-[#1e1e2f] border ${current.border} rounded-2xl p-6 shadow-2xl animate-in zoom-in-95 duration-200`}>
+            <div className={`relative w-full max-w-md bg-surface border ${current.border} rounded-card p-4 shadow-md animate-in zoom-in-95 duration-200`}>
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                         {current.icon}
-                        <h2 className={`text-xl font-bold ${current.header}`}>{title}</h2>
+                        <h2 className={`text-lg font-bold ${current.header}`}>{title}</h2>
                     </div>
                     <button onClick={onClose} aria-label="Close modal" className="p-1 hover:bg-white/5 rounded-lg transition-colors text-gray-500">
                         <X size={20} />

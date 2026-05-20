@@ -1,7 +1,7 @@
-const Card = ({ children, className = '' }) => {
+const Card = ({ children, className = '', onClick }) => {
     return (
-        <div className={`bg-surface/10 border border-border rounded-xl p-4 transition-all duration-150 hover:cursor-pointer hover:shadow-lg hover:shadow-surface/10 ${className}`}>
-         {children}   
+        <div className={`bg-surface-10 border border-border rounded-card p-3 transition-all duration-150 hover:cursor-pointer hover:shadow-md ${className}`} onClick={onClick}>
+         {children}
         </div>
     )
 }

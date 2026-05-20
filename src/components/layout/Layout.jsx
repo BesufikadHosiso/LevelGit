@@ -12,9 +12,9 @@ const Layout = ({ children }) => {
       
       <main 
         className={`
-          flex-1 p-6 pt-20 md:pt-6 min-w-0
+          flex-1 p-4 pt-16 md:pt-6 min-w-0
           transition-all duration-300 ease-in-out
-          ${isOpen ? 'md:pl-72' : 'md:pl-24'}
+          ${isOpen ? 'md:pl-60' : 'md:pl-20'}
         `}
       >
         {children}

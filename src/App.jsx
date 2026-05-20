@@ -5,8 +5,8 @@ import Focus from './pages/Focus'
 import Logs from './pages/Logs'
 import Path from './pages/Path'
 import Stats from './pages/Stats'
-
 import Layout from './components/layout/Layout'
+
 function App() {
 
   return (

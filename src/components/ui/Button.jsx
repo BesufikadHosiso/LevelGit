@@ -14,7 +14,7 @@ const Button = ({
       disabled={disabled}
       className={`
         px-4 py-2 rounded-lg text-sm transition-all duration-150
-        disabled:opacity-40 disabled:cursor-not-allowed
+        disabled:opacity-40 disabled:cursor-not-allowed hover:cursor-pointer
         ${variants[variant]} ${className}
       `}
     >

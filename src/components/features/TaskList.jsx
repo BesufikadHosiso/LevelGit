@@ -1,0 +1,183 @@
+import { useState } from 'react';
+import useApp from '../../context/useApp';
+// import Card from '../components/ui/Card'
+import Button from '../ui/Button';
+import Input from '../ui/Input'; // Import the Input component
+import Modal from '../ui/Modal';
+import { Trash2, Edit2, Check } from 'lucide-react'; // Keep lucide-react imports
+const TaskList = () => {
+    const { state, dispatch } = useApp()
+    const [showNewTaskInput, setShowNewTaskInput] = useState(false);
+    const [newTaskText, setNewTaskText] = useState('');
+    const [editingId, setEditingId] = useState(null);
+    const [editingText, setEditingText] = useState('');
+
+    const [deleteModal, setDeleteModal] = useState({ isOpen: false, taskId: null });
+    const [clearAllModal, setClearAllModal] = useState(false);
+
+    const handleDelete = (id) => {
+        setDeleteModal({ isOpen: true, taskId: id });
+    };
+
+    const handleEdit = (task) => {
+        setEditingId(task.id);
+        setEditingText(task.text);
+    };
+
+    const handleSaveEdit = (id) => {
+        if (editingText.trim()) {
+            dispatch({ type: 'EDIT_TASK', payload: { id, text: editingText.trim() } });
+            setEditingId(null);
+        }
+    };
+
+    const handleAddNewTask = () => {
+        if (newTaskText.trim()) {
+            dispatch({ 
+                type: 'ADD_TASK', 
+                payload: { id: Date.now(), text: newTaskText.trim(), done: false } 
+            });
+            setNewTaskText('');
+            setShowNewTaskInput(false);
+        }
+    };
+
+    const handleClearAll = () => {
+        setClearAllModal(true);
+    };
+
+    return (
+        <div className='p-4 bg-[#1e1e2f] rounded-lg'>
+            <div className='mb-6'>
+                {showNewTaskInput ? (
+                    <div className='flex items-center space-x-2 animate-in fade-in slide-in-from-top-2'>
+                        <Input 
+                            value={newTaskText}
+                            onChange={(e) => setNewTaskText(e.target.value)}
+                            placeholder="What needs to be done?"
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') handleAddNewTask();
+                                if (e.key === 'Escape') {
+                                    setShowNewTaskInput(false);
+                                    setNewTaskText('');
+                                }
+                            }}
+                            autoFocus
+                        />
+                        <Button variant='primary' onClick={handleAddNewTask}>Add</Button>
+                        <Button variant='secondary' onClick={() => setShowNewTaskInput(false)}>Cancel</Button>
+                    </div>
+                ) : (
+                    <div className='flex items-center space-x-2'>
+                        <Button variant='primary' onClick={() => setShowNewTaskInput(true)}>
+                            + Add New Task
+                        </Button>
+                        {state.tasks.length > 0 && (
+                            <Button variant='danger' onClick={handleClearAll}>
+                                Clear All
+                            </Button>
+                        )}
+                    </div>
+                )}
+            </div>
+
+            {state.tasks.length > 0 && (
+                <div className='mb-6'>
+                    <div className='relative h-3 bg-gray-700 rounded-full overflow-hidden'>
+                        <div
+                            className='absolute top-0 left-0 h-full bg-green-500 transition-all duration-500 ease-out'
+                            style={{ width: `${(state.tasks.filter(task => task.done).length / state.tasks.length) * 100}%` }}
+                        ></div>
+                    </div>
+                    <p className='text-sm text-gray-400 mt-2 text-right'>
+                        {state.tasks.filter(task => task.done).length} of {state.tasks.length} tasks completed
+                    </p>
+                </div>
+            )}
+
+            {state.tasks.length === 0 ? (
+                <div className='text-center text-[#e8eaf0]'>
+                    <p className='text-lg mb-4'>No tasks yet. Add your first task!</p>
+                </div>
+            ) : (
+                <ul className='space-y-2'>
+                    {state.tasks.map((task) => (
+                        <li key={task.id} className={`flex items-center justify-between p-4 rounded-xl transition-all duration-500 ${task.done ? 'bg-[#2d2d44] border-l-4 border-green-500 shadow-inner' : 'bg-[#252538] border-l-4 border-transparent hover:bg-[#2a2a3f]'}`}>
+                            <div className='flex items-center space-x-4 min-w-0 flex-1 mr-4'>
+                                <button
+                                    onClick={() => dispatch({ type: 'TOGGLE_TASK', payload: task.id })}
+                                    className={`relative flex items-center justify-center min-w-[24px] w-6 h-6 rounded-lg border-2 transition-all duration-500 transform active:scale-75 ${
+                                        task.done 
+                                            ? 'bg-green-500 border-green-500 rotate-0 scale-110' 
+                                            : 'border-gray-500 hover:border-green-400 -rotate-90'
+                                    }`}
+                                >
+                                    <Check 
+                                        size={14} 
+                                        className={`text-white transition-all duration-300 ${task.done ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`} 
+                                    />
+                                    {task.done && <span className='absolute inset-0 rounded-lg bg-green-500 animate-ping opacity-40' />}
+                                </button>
+                                {editingId === task.id ? (
+                                    <Input 
+                                        value={editingText}
+                                        onChange={(e) => setEditingText(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') handleSaveEdit(task.id);
+                                            if (e.key === 'Escape') setEditingId(null);
+                                        }}
+                                        autoFocus
+                                    />
+                                ) : (
+                                    <span className={`flex-grow min-w-0 truncate text-lg font-medium transition-all duration-500 ${task.done ? 'line-through text-gray-500 opacity-60' : 'text-[#e8eaf0]'}`}>
+                                        {task.text}
+                                    </span>
+                                )}
+                            </div>
+                            <div className='flex-shrink-0 space-x-2'>
+                                {editingId === task.id ? (
+                                    <Button variant='primary' onClick={() => handleSaveEdit(task.id)}>Save</Button>
+                                ) : (
+                                    <>
+                                        <Button variant='secondary' onClick={() => handleEdit(task)}>
+                                            <Edit2 size={18} />
+                                        </Button>
+                                        <Button variant='danger' onClick={() => handleDelete(task.id)}>
+                                            <Trash2 />
+                                        </Button>
+                                    </>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
+
+            {/* Modal for Deleting Single Task */}
+            <Modal
+                isOpen={deleteModal.isOpen}
+                onClose={() => setDeleteModal({ isOpen: false, taskId: null })}
+                title="Delete Task"
+                variant="warning"
+                confirmText="Delete"
+                onConfirm={() => dispatch({ type: 'DELETE_TASK', payload: deleteModal.taskId })}
+            >
+                Are you sure you want to delete this task? This action cannot be undone.
+            </Modal>
+
+            {/* Modal for Clearing All Tasks */}
+            <Modal
+                isOpen={clearAllModal}
+                onClose={() => setClearAllModal(false)}
+                title="Clear All Tasks"
+                variant="warning"
+                confirmText="Clear All"
+                onConfirm={() => dispatch({ type: 'CLEAR_TASKS' })}
+            >
+                This will permanently remove all tasks from your list. This is a destructive action.
+            </Modal>
+        </div>
+    )
+}
+
+export default TaskList;

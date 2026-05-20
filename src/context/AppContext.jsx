@@ -1,7 +1,10 @@
 import { createContext, useEffect, useReducer } from 'react';
 
 const initialState = {
-  tasks: [],
+  tasks: [
+    { id: 1, text: 'Initialize your development environment', done: false },
+    { id: 2, text: 'Deconstruct current complexity into units', done: false }
+  ],
   streak: 0,
   mood: null,
   logEntries: [],

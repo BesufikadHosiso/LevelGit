@@ -1,6 +1,7 @@
 
 const variants = {
   primary:  'bg-streak text-night font-semibold hover:brightness-95 hover:cursor-pointer',
+  secondary: 'bg-streak/10 border border-streak/20 text-streak hover:bg-streak/20 hover:cursor-pointer',
   ghost:    'border border-border text-muted hover:bg-white/5 hover:cursor-pointer',
   danger:   'bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 hover:cursor-pointer',
 }

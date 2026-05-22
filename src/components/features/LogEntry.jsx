@@ -51,7 +51,7 @@ const LogEntry = ({ id, title, description, tag, date, isLast, onEdit, onDelete 
             )}
 
             {/* Timeline Node (Dot) */}
-            <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-4 border-night flex items-center justify-center transition-all group-hover:scale-110 z-10 ${TAG_COLORS[mainTag] ? TAG_COLORS[mainTag].split(' ')[0] : 'bg-gray-500'}`}>
+            <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-4 border-night flex items-center justify-center transition-all group-hover:scale-110 z-10 ${TAG_COLORS[mainTag] ? TAG_COLORS[mainTag].split(' ')[0] : 'bg-streak'}`}>
                 <div className="w-1.5 h-1.5 rounded-full bg-night" />
             </div>
 

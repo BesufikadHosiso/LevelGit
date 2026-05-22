@@ -61,28 +61,30 @@ const Focus = () => {
     }, [seconds]);
 
     return (
-        <div className='flex flex-col items-center gap-4'>
-            <CurrentTask onTaskSelect={setSelectedTask} selectedTask={selectedTask} isLocked={!isTimerFree} />
-            <Card className="flex flex-col items-center gap-6 w-full max-w-md">
-                <TimerDisplay 
-                    seconds={selectedTask ? seconds : totalSeconds} 
-                    totalSeconds={totalSeconds} 
-                    isRunning={isRunning}
-                    onToggle={toggle}
-                    onReset={reset}
+        <div className="flex flex-col justify-center items-center min-h-screen p-4">
+            <div className='flex flex-col items-center gap-4 w-full max-w-md'>
+                <CurrentTask onTaskSelect={setSelectedTask} selectedTask={selectedTask} isLocked={!isTimerFree} />
+                <Card className="flex flex-col items-center gap-6 w-full">
+                    <TimerDisplay
+                        seconds={selectedTask ? seconds : totalSeconds}
+                        totalSeconds={totalSeconds}
+                        isRunning={isRunning}
+                        onToggle={toggle}
+                        onReset={reset}
+                    />
+                    <TimerControls
+                        isRunning={isRunning}
+                        onToggle={canStart ? toggle : () => alert("Please select a task first")}
+                        onReset={reset}
+                    />
+                </Card>
+
+                <DurationPicker
+                    duration={duration}
+                    onSelect={changeDuration}
+                    disabled={isRunning}
                 />
-                <TimerControls 
-                    isRunning={isRunning} 
-                    onToggle={canStart ? toggle : () => alert("Please select a task first")} 
-                    onReset={reset} 
-                />
-            </Card>
-            
-            <DurationPicker
-                duration={duration}
-                onSelect={changeDuration}
-                disabled={isRunning}
-            />
+            </div>
         </div>
     )
 }

@@ -5,22 +5,33 @@ const StatSummary = () => {
     const { state } = useApp();
 
     return (
-     // I don't like the alignment of items inside the card I want it to be aligned in modern way not ordnary top down so I want it to be fixed now
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-3 bg-surface rounded-card text-center flex flex-col items-center">
-            <Activity className="mx-auto mb-1" size={18} />
-          <h2 className="text-base font-semibold mb-1 text-white">Current Streak</h2>
-          <p className="text-xl font-bold text-streak">{state.streak} {state.streak === 1 ? 'day' : 'days'}</p>
+        <div className="p-4 bg-surface rounded-card flex items-center gap-4 border border-border/50">
+          <div className="p-2.5 bg-streak/10 rounded-xl text-streak">
+            <Activity size={20} />
+          </div>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Current Streak</p>
+            <h2 className="text-lg font-bold text-white">{state.streak} {state.streak === 1 ? 'day' : 'days'}</h2>
+          </div>
         </div>
-        <div className="p-3 bg-surface rounded-card text-center flex flex-col items-center">
-            <ListChecks className="mx-auto mb-1" size={18} />
-          <h2 className="text-base font-semibold mb-1 text-white">Logged Topics</h2>
-          <p className="text-xl font-bold text-streak">{state.logEntries.length}</p>
+        <div className="p-4 bg-surface rounded-card flex items-center gap-4 border border-border/50">
+          <div className="p-2.5 bg-streak/10 rounded-xl text-streak">
+            <ListChecks size={20} />
+          </div>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Logged Topics</p>
+            <h2 className="text-lg font-bold text-white">{state.logEntries.length}</h2>
+          </div>
         </div>
-        <div className="p-3 bg-surface rounded-card text-center flex flex-col items-center">
-            <CheckCircle className="mx-auto mb-1" size={18} />
-            <h2 className="text-base font-semibold mb-1 text-white">Total Tasks</h2>
-          <p className="text-xl font-bold text-streak">{state.tasks.length}</p>
+        <div className="p-4 bg-surface rounded-card flex items-center gap-4 border border-border/50">
+          <div className="p-2.5 bg-streak/10 rounded-xl text-streak">
+            <CheckCircle size={20} />
+          </div>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Total Tasks</p>
+            <h2 className="text-lg font-bold text-white">{state.tasks.length}</h2>
+          </div>
         </div>
       </div>
 

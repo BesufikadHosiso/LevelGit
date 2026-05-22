@@ -85,13 +85,13 @@ const AddInsight = () => {
                 label="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter insight title"
+                placeholder="Title"
             />
             <Input 
                 label="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Enter insight description"
+                placeholder="Dive into the details. What did you learn(do)?"
                 textarea
             />
 

@@ -45,6 +45,7 @@ const reducer = (state, action) => {
     'ADD_LOG',
     'EDIT_TASK',
     'CLEAR_TASKS',
+    'EDIT_LOG',
   ]);
   const streakUpdate = activityActions.has(action.type) ? buildStreakUpdate(state) : {};
 
@@ -92,6 +93,23 @@ const reducer = (state, action) => {
           task.id === action.payload.id
             ? { ...task, text: action.payload.text }
             : task
+        ),
+        ...streakUpdate,
+      };
+
+    case 'DELETE_LOG':
+      return {
+        ...state,
+        logEntries: state.logEntries.filter((log) => log.id !== action.payload),
+      };
+
+    case 'EDIT_LOG':
+      return {
+        ...state,
+        logEntries: state.logEntries.map((log) =>
+          log.id === action.payload.id
+            ? { ...log, ...action.payload }
+            : log
         ),
         ...streakUpdate,
       };

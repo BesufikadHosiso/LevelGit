@@ -12,6 +12,7 @@ The bar color comes from your tagColors object. How do you get the background co
 
 import useApp from "../../context/useApp";
 import Card from "../ui/Card";
+import { Library } from "lucide-react";
 
 const TagBreakdown = () => {
     const { state } = useApp();
@@ -37,19 +38,22 @@ const TagBreakdown = () => {
     const maxCount = Math.max(...Object.values(tagCounts), 1);
 
     return (
-        <Card className="p-5 border border-border/50 shadow-sm space-y-6">
+        <Card className="p-5 border border-border/50 shadow-sm flex flex-col min-h-[240px]">
             {hasNoLogs ? (
-                <div className="py-8 text-center space-y-3">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-20 text-streak/50 mb-2">
-                        <span className="text-xl">🌱</span>
+                <>
+                    <div className="flex-grow flex flex-col items-center justify-center space-y-4">
+                        <div className="p-4 bg-streak/5 rounded-3xl text-streak/30">
+                            <Library size={40} strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-lg font-bold text-[#e8eaf0] tracking-tight">Your growth story is waiting</h3>
                     </div>
-                    <h3 className="text-white font-bold">Your knowledge journey is waiting</h3>
-                    <p className="text-sm text-muted max-w-[200px] mx-auto leading-relaxed">
-                        Every expert started with one note. Write down what you learned today to see your growth here!
+                    <p className="text-[11px] text-ghost text-center uppercase tracking-widest leading-relaxed pt-5 border-t border-border/10">
+                        Every expert started with one note. Write down what you learned today to see your journey bloom.
                     </p>
-                </div>
+                </>
             ) : (
-                displayTags.map(([tag, count]) => {
+                <div className="space-y-6">
+                    {displayTags.map(([tag, count]) => {
                 // Get the color from tagColors
                 const colorClass = (state.tagColors && state.tagColors[tag]) || "bg-streak text-black";
                 const bgColor = colorClass.split(' ')[0]; // Get the bg color class
@@ -71,7 +75,8 @@ const TagBreakdown = () => {
                         </div>
                     </div>
                 );
-                })
+                    })}
+                </div>
             )}
         </Card>
     );

@@ -13,15 +13,6 @@ The bar color comes from your tagColors object. How do you get the background co
 import useApp from "../../context/useApp";
 import Card from "../ui/Card";
 
-const POPULAR_LANGS = [
-    "JavaScript",
-    "React",
-    "Node.js",
-    "Python",
-    "TypeScript",
-    "Tailwind CSS"
-];
-
 const TagBreakdown = () => {
     const { state } = useApp();
 
@@ -34,28 +25,31 @@ const TagBreakdown = () => {
         return acc;
     }, {});
 
-    // 2. Merge with popular languages (placeholders)
-    // We ensure that popular languages appear with at least a 0 count
-    const combinedCounts = { ...tagCounts };
-    POPULAR_LANGS.forEach(lang => {
-        if (combinedCounts[lang] === undefined) {
-            combinedCounts[lang] = 0;
-        }
-    });
+    // 2. Filter and Sort
+    // We only show tags that actually have at least 1 entry.
+    const displayTags = Object.entries(tagCounts)
+        .filter(([_, count]) => count > 0)
+        .sort((a, b) => b[1] - a[1]);
 
-    // 3. Prepare display data
-    // Sort by count descending and take the top 6. 
-    // This automatically removes placeholders as user logs real data.
-    const displayTags = Object.entries(combinedCounts)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 6);
+    const hasNoLogs = displayTags.length === 0;
 
     // Get max count for scaling bars (minimum 1 to avoid division by zero)
-    const maxCount = Math.max(...Object.values(combinedCounts), 1);
+    const maxCount = Math.max(...Object.values(tagCounts), 1);
 
     return (
         <Card className="p-5 border border-border/50 shadow-sm space-y-6">
-            {displayTags.map(([tag, count]) => {
+            {hasNoLogs ? (
+                <div className="py-8 text-center space-y-3">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-20 text-streak/50 mb-2">
+                        <span className="text-xl">🌱</span>
+                    </div>
+                    <h3 className="text-white font-bold">Your knowledge journey is waiting</h3>
+                    <p className="text-sm text-muted max-w-[200px] mx-auto leading-relaxed">
+                        Every expert started with one note. Write down what you learned today to see your growth here!
+                    </p>
+                </div>
+            ) : (
+                displayTags.map(([tag, count]) => {
                 // Get the color from tagColors
                 const colorClass = (state.tagColors && state.tagColors[tag]) || "bg-streak text-black";
                 const bgColor = colorClass.split(' ')[0]; // Get the bg color class
@@ -77,7 +71,8 @@ const TagBreakdown = () => {
                         </div>
                     </div>
                 );
-            })}
+                })
+            )}
         </Card>
     );
 };

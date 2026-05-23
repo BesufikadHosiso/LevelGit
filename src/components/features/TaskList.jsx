@@ -48,7 +48,7 @@ const TaskList = () => {
 
     return (
         <div className='p-3 bg-surface rounded-card mt-6'>
-        <h1 className='text-sm font-light italic mb-4 text-white border-l-4 border-streak pl-3 opacity-70'>Success is not final, failure is not fatal: it is the courage to continue that counts.</h1>
+        <h1 className='text-sm font-light italic mb-4 text-white border-l-4 border-streak pl-3 opacity-70'>Every small step today helps you reach your big dreams.</h1>
         <div className='p-3 bg-surface rounded-card'>
             <div className='mb-6'>
                 {showNewTaskInput ? (
@@ -72,7 +72,7 @@ const TaskList = () => {
                 ) : (
                     <div className='flex items-center space-x-2'>
                         <Button variant='primary' onClick={() => setShowNewTaskInput(true)}>
-                            + Add New Task
+                            + Plan a New Win
                         </Button>
                         {state.tasks.length > 0 && (
                             <Button variant='danger' onClick={handleClearAll}>
@@ -92,7 +92,7 @@ const TaskList = () => {
                         ></div>
                     </div>
                     <p className='text-sm text-muted mt-2 text-right'>
-                        {state.tasks.filter(task => task.done).length} of {state.tasks.length} tasks completed
+                        {state.tasks.filter(task => task.done).length} of {state.tasks.length} goals reached
                     </p>
                 </div>
             )}

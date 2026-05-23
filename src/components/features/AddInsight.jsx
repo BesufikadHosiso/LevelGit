@@ -79,7 +79,7 @@ const AddInsight = () => {
 
     return(
         <form onSubmit={handleSubmit} className="p-4 bg-surface rounded-card border border-border/50 space-y-5">
-            <h2 className="text-xl font-bold text-white">Add New Insight</h2>
+            <h2 className="text-xl font-bold text-white">Save a New Discovery</h2>
             {error && <p className="text-red-400 text-xs bg-red-400/10 p-2 rounded-lg">{error}</p>}
             <Input 
                 label="Title"
@@ -96,7 +96,7 @@ const AddInsight = () => {
             />
 
             <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Select Tags</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pick a Category</label>
                 <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar active:cursor-grabbing">
                     {LANGUAGES.map(lang => (
                         <button
@@ -116,7 +116,7 @@ const AddInsight = () => {
             </div>
 
             <Button variant='primary' type="submit" className="w-full py-4 text-base font-bold">
-                Save Insight
+                Keep this Knowledge
             </Button>
         </form>
     )

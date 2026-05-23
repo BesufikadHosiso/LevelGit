@@ -39,12 +39,12 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
                         <ListTodo size={20} className="text-streak" />
                     </div>
                     <span className={`font-medium transition-colors truncate max-w-55 ${selectedTask ? 'text-white' : 'text-muted-foreground group-hover:text-white'}`}>
-                        {selectedTask ? selectedTask.text : 'No task selected'}
+                        {selectedTask ? selectedTask.text : 'Ready to start?'}
                     </span>
                 </div>
                 {!isLocked && (
                     <span className="text-streak text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                        {selectedTask ? 'Change' : 'Pick Task'}
+                        {selectedTask ? 'Change' : 'Choose One'}
                     </span>
                 )}
             </button>
@@ -54,7 +54,7 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
                 onClose={() => setIsModalOpen(false)} 
                 onConfirm={handleConfirmSelection}
                 confirmDisabled={!tempSelection}
-                title="Focus on a task"
+                title="What is your priority?"
             >
                 {undoneTasks.length > 0 ? (
                     <div className="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1">

@@ -103,17 +103,17 @@ const PickMood = () => {
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.24em] text-streak/80 font-semibold">
-            Mood tracker
+            Check In
           </p>
           <h2 className="mt-2 text-lg font-semibold text-white">
-            How are you feeling today?
+            How is your energy today?
           </h2>
         </div>
 
         <div className="rounded-card border border-border bg-surface-10 px-3 py-2 text-sm text-muted">
-          Current mood:
+          Right now:
           <span className="ml-2 font-semibold text-white">
-            {state.mood ?? 'Not set yet'}
+            {state.mood ?? 'Neutral'}
           </span>
         </div>
       </div>

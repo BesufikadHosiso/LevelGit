@@ -24,8 +24,8 @@ const StatCards = () => {
                     <Activity size={24} strokeWidth={2.5} />
                 </div>
                 <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Days in a Row</p>
-                    <h2 className="text-lg font-bold text-white leading-tight">
+                    <p className="text-xs font-bold uppercase tracking-wider text-ghost">Days in a Row</p>
+                    <h2 className="text-2xl font-bold text-[#e8eaf0] leading-tight">
                         {state.streak} {state.streak === 1 ? 'day' : 'days'}
                     </h2>
                 </div>
@@ -37,8 +37,8 @@ const StatCards = () => {
                     <ListChecks size={24} strokeWidth={2.5} />
                 </div>
                 <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Ideas Saved</p>
-                    <h2 className="text-lg font-bold text-white leading-tight">{state.logEntries.length}</h2>
+                    <p className="text-xs font-bold uppercase tracking-wider text-ghost">Ideas Saved</p>
+                    <h2 className="text-2xl font-bold text-[#e8eaf0] leading-tight">{state.logEntries.length}</h2>
                 </div>
             </Card>
 
@@ -48,8 +48,8 @@ const StatCards = () => {
                     <Tag size={24} strokeWidth={2.5} />
                 </div>
                 <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Main Focus</p>
-                    <h2 className="text-lg font-bold text-white leading-tight truncate max-w-20" title={mostUsedTag}>
+                    <p className="text-xs font-bold uppercase tracking-wider text-ghost">Main Focus</p>
+                    <h2 className="text-2xl font-bold text-[#e8eaf0] leading-tight truncate max-w-20" title={mostUsedTag}>
                         {mostUsedTag}
                     </h2>
                 </div>
@@ -61,8 +61,8 @@ const StatCards = () => {
                     <Smile size={24} strokeWidth={2.5} />
                 </div>
                 <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">How You Feel</p>
-                    <h2 className="text-lg font-bold text-white leading-tight">{state.mood || 'N/A'}</h2>
+                    <p className="text-xs font-bold uppercase tracking-wider text-ghost">How You Feel</p>
+                    <h2 className="text-2xl font-bold text-[#e8eaf0] leading-tight">{state.mood || 'N/A'}</h2>
                 </div>
             </Card>
         </div>

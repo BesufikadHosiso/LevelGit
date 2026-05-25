@@ -97,7 +97,7 @@ const AddInsight = () => {
 
             <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pick a Category</label>
-                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar active:cursor-grabbing">
+                <div className="flex gap-2 overflow-x-auto pb-3 active:cursor-grabbing">
                     {LANGUAGES.map(lang => (
                         <button
                             key={lang}

@@ -57,20 +57,20 @@ const LogEntry = ({ id, title, description, tag, date, isLast, onEdit, onDelete 
 
             <div className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-surface-20 px-2 py-1 rounded">
+                    <div className="flex items-start gap-3 min-w-0 flex-1">
+                        <span className="shrink-0 mt-0.5 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-surface-20 px-2 py-1 rounded">
                             {formattedDate} <span className="mx-1 text-streak font-bold">*</span> {formattedTime}
                         </span>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex gap-1.5 overflow-x-auto pb-3">
                             {Array.isArray(tag) ? (
                                 tag.map((t) => (
-                                    <span key={t} className={`text-[10px] font-bold px-2 py-1 rounded border border-white/5 uppercase tracking-wider ${TAG_COLORS[t] || 'bg-gray-400/20 text-gray-400'}`}>
+                                    <span key={t} className={`shrink-0 whitespace-nowrap text-[10px] font-bold px-2 py-1 rounded border border-white/5 uppercase tracking-wider ${TAG_COLORS[t] || 'bg-gray-400/20 text-gray-400'}`}>
                                         #{t}
                                     </span>
                                 ))
                             ) : (
                                 tag && (
-                                    <span className={`text-[10px] font-bold px-2 py-1 rounded border border-white/5 uppercase tracking-wider ${TAG_COLORS[tag] || 'bg-gray-400/20 text-gray-400'}`}>
+                                    <span className={`shrink-0 whitespace-nowrap text-[10px] font-bold px-2 py-1 rounded border border-white/5 uppercase tracking-wider ${TAG_COLORS[tag] || 'bg-gray-400/20 text-gray-400'}`}>
                                         #{tag}
                                     </span>
                                 )

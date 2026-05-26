@@ -7,13 +7,14 @@ const variants = {
 }
 
 const Button = ({
-  children, variant = 'ghost', onClick, disabled, className = ''
+  children, variant = 'ghost', onClick, disabled, className = '', fullWidth = false
 }) => {
     return (
         <button
       onClick={onClick}
       disabled={disabled}
       className={`
+        ${fullWidth ? 'w-full' : 'w-auto'}
         px-3 py-1.5 rounded-lg text-sm transition-all duration-150
         disabled:opacity-40 disabled:cursor-not-allowed hover:cursor-pointer
         ${variants[variant]} ${className}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NAV_ITEMS = [
@@ -53,6 +53,17 @@ const NAV_ITEMS = [
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* ================= MOBILE TOP HEADER ================= */}
@@ -75,7 +86,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
         <nav 
           className={`
-            fixed top-16 left-0 bottom-0 w-56 bg-surface border-r border-gray-700 shadow-xl p-3
+            fixed top-16 left-0 bottom-0 w-[80%] bg-surface border-r border-gray-700 shadow-xl p-3
             transition-transform duration-300 ease-in-out
             ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
           `}
@@ -118,7 +129,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         className={`
           fixed top-0 left-0 bottom-0 z-40 h-screen bg-surface text-white p-3 hidden md:flex flex-col justify-between md:justify-start
           transition-all duration-300 ease-in-out
-          ${isOpen ? 'w-56' : 'w-14'}
+          ${isOpen ? 'w-[20%]' : 'w-14'}
         `}
         aria-label="Main Desktop Navigation"
       >

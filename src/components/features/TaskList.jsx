@@ -74,11 +74,6 @@ const TaskList = () => {
                         <Button variant='primary' onClick={() => setShowNewTaskInput(true)}>
                             + Plan a New Win
                         </Button>
-                        {state.tasks.length > 0 && (
-                            <Button variant='danger' onClick={handleClearAll}>
-                                Clear All
-                            </Button>
-                        )}
                     </div>
                 )}
             </div>
@@ -153,6 +148,18 @@ const TaskList = () => {
                         </li>
                     ))}
                 </ul>
+            )}
+
+            {state.tasks.length > 0 && (
+                <div className="mt-8 flex justify-center border-t border-border/30 pt-4">
+                    <Button 
+                        variant='ghost' 
+                        onClick={handleClearAll}
+                        className="text-muted-foreground hover:text-red-400 hover:border-red-500/20 hover:bg-red-500/10 transition-all duration-200"
+                    >
+                        Clear All Tasks
+                    </Button>
+                </div>
             )}
 
             {/* Modal for Deleting Single Task */}

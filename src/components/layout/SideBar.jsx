@@ -127,9 +127,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       {/* ================= DESKTOP SIDEBAR ================= */}
       <aside 
         className={`
-          fixed top-0 left-0 bottom-0 z-40 h-screen bg-surface text-white p-3 hidden md:flex flex-col justify-between md:justify-start
+          sticky top-0 z-40 h-screen bg-surface text-white p-3 hidden md:flex flex-col justify-between md:justify-start
           transition-all duration-300 ease-in-out
-          ${isOpen ? 'w-[20%]' : 'w-14'}
+          w-full
         `}
         aria-label="Main Desktop Navigation"
       >

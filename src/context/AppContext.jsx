@@ -172,16 +172,15 @@ const reducer = (state, action) => {
         timer: {
           ...state.timer,
           isActive: true,
-          targetTime: Date.now() + (action.payload || state.timer.duration) * 1000,
           targetTime: Date.now() + (Number(action.payload) || state.timer.duration) * 1000,
           showModal: false,
         },
         ...streakUpdate,
       };
 
-    case 'STOP_TIMER':
-      const remaining = state.timer.targetTime ? Math.max(0, Math.floor((state.timer.targetTime - Date.now()) / 1000)) : state.timer.duration;
-      return {
+    case 'STOP_TIMER': {
+  const remaining = state.timer.targetTime ? Math.max(0, Math.floor((state.timer.targetTime - Date.now()) / 1000)) : state.timer.duration;
+  return {
         ...state,
         timer: {
           ...state.timer,
@@ -190,6 +189,7 @@ const reducer = (state, action) => {
           duration: remaining,
         }
       };
+    }
 
     case 'RESET_TIMER':
       return {
@@ -238,7 +238,7 @@ const AppProvider = ({ children }) => {
         const saved = JSON.parse(persisted);
         // Merge with initialState to ensure new properties like 'paths' exist
         return { ...initialState, ...saved };
-      } catch (e) { return initialState; }
+      } catch { return initialState; }
     }
     return initialState;
   });

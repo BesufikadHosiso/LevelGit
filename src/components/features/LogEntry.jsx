@@ -35,7 +35,7 @@ const TAG_COLORS = {
   'LangChain': 'bg-[#1C3C3C] text-white'
 };
 
-const LogEntry = ({ id, title, description, tag, date, isLast, onEdit, onDelete }) => {
+const LogEntry = ({  title, description, tag, date, isLast, onEdit, onDelete }) => {
 
     const formattedDate = new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     const formattedTime = new Date(date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Input = ({ label, textarea, className = '', ...props }) => {
   // Dynamically switch between 'textarea' and 'input'
   const Component = textarea ? 'textarea' : 'input';

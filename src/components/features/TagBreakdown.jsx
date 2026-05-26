@@ -1,15 +1,3 @@
-/*
-A list of tags with a colored bar next to each one showing how many entries that tag has. The widest bar = most used tag. Each bar uses the tag's brand color from your tagColors object.
-hints
-First compute the counts object from logEntries — same reduce pattern as the most-used-tag calculation above.
-Only show tags that have at least 1 entry — filter out zeros.
-The bar width is a percentage — count for this tag divided by the max count, multiplied by 100. That gives you a 0–100% width. Use inline style for this since Tailwind can't generate dynamic widths.
-The bar color comes from your tagColors object. How do you get the background color from a Tailwind class string like
-"bg-[#61DAFB] text-black"
-? Think about splitting the string.
- Done when: adding a React log entry on the Log page makes the React bar on Stats grow automatically.
-*/
-
 import useApp from "../../context/useApp";
 import Card from "../ui/Card";
 import { Library } from "lucide-react";
@@ -29,7 +17,7 @@ const TagBreakdown = () => {
     // 2. Filter and Sort
     // We only show tags that actually have at least 1 entry.
     const displayTags = Object.entries(tagCounts)
-        .filter(([_, count]) => count > 0)
+        .filter(([, count]) => count > 0)
         .sort((a, b) => b[1] - a[1]);
 
     const hasNoLogs = displayTags.length === 0;

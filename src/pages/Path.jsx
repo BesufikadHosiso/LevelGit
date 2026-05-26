@@ -18,7 +18,7 @@ const Path = () => {
         : "No active paths found. Start a new learning journey today!";
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="w-full">
             <h1 className="text-2xl font-bold text-white">Create Your Learning Path</h1>
             <p className="mt-2 mb-6 text-sm text-muted">{subtitle}</p>
             <CreatePathForm techOptions={TECH_OPTIONS} />

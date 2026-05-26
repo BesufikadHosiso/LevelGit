@@ -10,7 +10,7 @@ const Stats = () => {
         : "Start your learning journey today to see your stats here.";
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full">
             <h1 className="text-2xl font-bold text-white">Your Growth Journey</h1>
             <p className="text-sm text-muted">{subtitle}</p>
             <StatCards />

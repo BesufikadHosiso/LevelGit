@@ -115,9 +115,11 @@ const AddInsight = () => {
                 </div>
             </div>
 
-            <Button variant='primary' type="submit" className="w-full py-4 text-base font-bold">
-                Keep this Knowledge
-            </Button>
+            <div className="flex justify-end pt-2">
+                <Button variant='primary' type="submit" className="px-8 py-3 text-base font-bold">
+                    Keep this Knowledge
+                </Button>
+            </div>
         </form>
     )
 };

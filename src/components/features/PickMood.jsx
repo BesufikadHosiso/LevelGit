@@ -100,7 +100,7 @@ const PickMood = () => {
         </div>
       )}
 
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-4 px-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.24em] text-streak/80 font-semibold">
             Check In
@@ -110,7 +110,7 @@ const PickMood = () => {
           </h2>
         </div>
 
-        <div className="rounded-card border border-border bg-surface-10 px-3 py-2 text-sm text-muted">
+        <div className="rounded-card border border-border bg-surface-10 px-5 py-2 text-sm text-muted">
           Right now:
           <span className="ml-2 font-semibold text-white">
             {state.mood ?? 'Neutral'}

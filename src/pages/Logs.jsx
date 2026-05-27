@@ -8,11 +8,11 @@ const Logs = () => {
     const subtitle = `You have recorded ${logCount} learning insight${logCount === 1 ? '' : 's'} in your personal memory.`;
 
     return (
-        <div className="w-full bg-surface rounded-card border border-border/50 space-y-5">
+        <div className="w-full space-y-5">
             <h2 className="text-xl font-bold text-white">Your Growth History</h2>
-            <p className="text-muted-foreground text-sm">{subtitle}</p>
+            <p className="text-muted text-sm">{subtitle}</p>
             <AddInsight />
-            <div className="space-y-4">
+            <div className="space-y-4 pt-8 px-4 w-full bg-surface rounded-card border border-border/50">
                 <LogTimeline />
             </div>
         </div>

@@ -122,7 +122,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       {/* ================= DESKTOP SIDEBAR ================= */}
       <aside 
         className={`
-          sticky top-0 z-40 h-screen bg-surface text-white p-3 hidden md:flex flex-col justify-between md:justify-start
+          sticky top-0 z-40 h-screen bg-surface text-white p-3 hidden md:flex flex-col justify-between md:justify-start overflow-hidden
           transition-all duration-300 ease-in-out
           w-full
         `}

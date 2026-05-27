@@ -12,14 +12,14 @@ const Layout = ({ children }) => {
 
   return (
     <div 
-      className="min-h-screen bg-night flex flex-col md:flex-row overflow-x-hidden"
+      className="min-h-screen bg-night flex flex-col md:flex-row"
       style={{ '--sidebar-width': isFocusPage ? '0px' : sidebarWidth }}
     >
       <div className={`
-        shrink-0 transition-[width,opacity] duration-300 ease-in-out z-40
-        ${isFocusPage ? 'md:fixed md:inset-y-0 md:left-0 md:w-[20%] md:opacity-0 md:hover:opacity-100' : 'hidden md:block w-full md:w-[var(--sidebar-width)]'}
+        shrink-0 transition-[width,opacity] duration-300 ease-in-out z-40 bg-surface
+        ${isFocusPage ? 'md:fixed md:inset-y-0 md:left-0 md:w-[64px] md:opacity-0 md:hover:opacity-100' : 'hidden md:block w-full md:w-[var(--sidebar-width)]'}
       `}>
-        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Sidebar isOpen={isFocusPage ? false : isOpen} setIsOpen={setIsOpen} />
       </div>
 
      <main

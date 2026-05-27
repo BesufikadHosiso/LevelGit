@@ -63,3 +63,28 @@
 /* Small helper to hide native scrollbars while remaining scrollable */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom Global Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b; /* Deep night background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6ee7b7; /* Our custom 'streak' color */
+  border-radius: 10px;
+  border: 2px solid #09090b; /* Creates a padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4ade80; /* Slightly brighter for hover state */
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6ee7b7 #09090b;
+}

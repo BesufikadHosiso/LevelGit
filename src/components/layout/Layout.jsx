@@ -21,13 +21,15 @@ const Layout = ({ children }) => {
 
       <div className={`
         shrink-0 transition-[width,opacity] duration-300 ease-in-out z-40 bg-surface
-        ${isFocusPage ? 'lg:fixed lg:inset-y-0 lg:left-0 lg:w-[64px] lg:opacity-0 lg:hover:opacity-100' : 'hidden lg:block w-full lg:w-[var(--sidebar-width)]'}
+        ${isFocusPage 
+          ? 'lg:fixed lg:inset-y-0 lg:left-0 lg:w-20 lg:opacity-0 lg:hover:opacity-100' 
+          : `hidden lg:block ${isOpen ? 'lg:w-64' : 'lg:w-20'}`}
       `}>
         <Sidebar isOpen={isFocusPage ? false : isOpen} setIsOpen={setIsOpen} />
       </div>
 
      <main
-        className="flex-1 px-8 py-4 pt-16 lg:pt-6 lg:pl-[var(--sidebar-width)] min-w-0 transition-all duration-300 ease-in-out"
+        className={`flex-1 px-8 py-4 pt-16 lg:pt-6 min-w-0 transition-all duration-300 ease-in-out ${isFocusPage ? 'lg:pl-20' : ''}`}
       >
         {children}
       </main>

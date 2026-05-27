@@ -9,7 +9,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         className={`
           sticky top-0 z-40 h-screen bg-surface text-white p-3 hidden lg:flex flex-col justify-between lg:justify-start overflow-hidden
           transition-all duration-300 ease-in-out
-          w-full
+          ${isOpen ? 'w-64' : 'w-20'}
         `}
         aria-label="Main Desktop Navigation"
       >
@@ -17,12 +17,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <img 
             src="/LevelGitLogo.png" 
             alt="LevelGit Logo" 
-            className={`h-9 w-auto object-contain select-none transition-all duration-200 ${isOpen ? 'block opacity-100' : 'hidden opacity-0 lg:block'}`} 
+            className={`h-9 object-contain select-none transition-all duration-300 ${isOpen ? 'block opacity-100 w-auto' : 'hidden opacity-0 w-0'}`} 
           />
           
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none p-1 rounded hover:bg-gray-700 transition-colors"
+            className="text-white focus:outline-none p-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center shrink-0"
             aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

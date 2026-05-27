@@ -49,4 +49,4 @@ const NAV_ITEMS = [
   },
 ];
 
-export default NAV_ITEMS;
+export { NAV_ITEMS };

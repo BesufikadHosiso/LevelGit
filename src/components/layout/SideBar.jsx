@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import NAV_ITEMS from './navItems';
+import { NAV_ITEMS } from './navItems';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   return (

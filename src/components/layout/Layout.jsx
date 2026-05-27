@@ -9,12 +9,12 @@ const Layout = ({ children }) => {
 
   // Normalize casing for the focus page check
   const isFocusPage = location.pathname.toLowerCase() === '/focus';
-  const sidebarWidth = isOpen ? '20%' : '64px';
 
   return (
     <div 
-      className="min-h-screen bg-night flex flex-col md:flex-row"
-      style={{ '--sidebar-width': isFocusPage ? '0px' : sidebarWidth }}
+      className={`min-h-screen bg-night flex flex-col lg:flex-row ${
+        isFocusPage ? 'is-focus-page' : isOpen ? 'is-sidebar-open' : 'is-sidebar-closed'
+      }`}
     >
       {/* Mobile/Tablet Header (visible on screens smaller than 'lg') */}
       <MobileHeader />

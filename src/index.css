@@ -88,3 +88,8 @@
   scrollbar-width: thin;
   scrollbar-color: #6ee7b7 #09090b;
 }
+
+/* CSP-compliant dynamic variable overrides */
+.is-sidebar-open { --sidebar-width: 20%; }
+.is-sidebar-closed { --sidebar-width: 64px; }
+.is-focus-page { --sidebar-width: 0px; }

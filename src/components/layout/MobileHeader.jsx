@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import NAV_ITEMS from './navItems';
+import { NAV_ITEMS } from './navItems';
 
 const MobileHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Custom Properties */
+  --sidebar-width: 20%;
+
   /* Brand Colors */
   --color-night: #0a0c0f;
   --color-surface: #0f1117;

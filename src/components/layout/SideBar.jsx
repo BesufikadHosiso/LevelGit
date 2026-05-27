@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   },
   { 
     name: 'Focus', 
-    path: '/Focus',
+    path: '/focus',
     icon: (
       <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -68,7 +68,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     <>
       {/* ================= MOBILE TOP HEADER ================= */}
       <header className="fixed top-0 left-0 right-0 h-14 z-50 bg-surface text-white px-3 flex items-center justify-between md:hidden shadow-md">
-        <div className="text-lg font-bold select-none">DEVMEPATH</div>
+        <img src="/LevelGitLogo.png" alt="LevelGit Logo" className="h-8 w-auto object-contain select-none" />
         
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -86,7 +86,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
         <nav 
           className={`
-            fixed top-16 left-0 bottom-0 w-[80%] bg-surface border-r border-gray-700 shadow-xl p-3
+            fixed top-14 left-0 bottom-0 w-[80%] bg-surface border-r border-gray-700 shadow-xl p-3
             transition-transform duration-300 ease-in-out
             ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
           `}
@@ -96,17 +96,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <li key={item.path}>
                 <NavLink
                   to={item.path}
-                  end
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-  `flex items-center gap-3 rounded transition-all duration-200 py-2 px-3 ${
-    isOpen ? 'justify-start' : 'justify-center p-2'
-  } ${
-    isActive 
-      ? 'bg-gray-700 text-streak font-medium'
-      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-  }`
-}
+                    `flex items-center gap-3 rounded transition-all duration-200 py-2 px-3 justify-start ${
+                      isActive ? 'bg-gray-700 text-streak font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    }`
+                  }
                 >
                   {item.icon}
                   <span className="font-medium">{item.name}</span>
@@ -134,9 +129,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         aria-label="Main Desktop Navigation"
       >
         <div className={`flex items-center mb-6 ${isOpen ? 'justify-between' : 'justify-center'}`}>
-          <div className={`text-lg font-bold select-none transition-all duration-200 ${isOpen ? 'block opacity-100' : 'hidden opacity-0'}`}>
-            DEVMEPATH
-          </div>
+          <img 
+            src="/LevelGitLogo.png" 
+            alt="LevelGit Logo" 
+            className={`h-9 w-auto object-contain select-none transition-all duration-200 ${isOpen ? 'block opacity-100' : 'hidden opacity-0'}`} 
+          />
           
           <button 
             onClick={() => setIsOpen(!isOpen)}
@@ -159,16 +156,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <li key={item.path}>
                 <NavLink
                   to={item.path}
-                  end
                   className={({ isActive }) =>
-  `flex items-center gap-3 rounded transition-all duration-200 py-2 px-3 ${
-    isOpen ? 'justify-start' : 'justify-center p-2'
-  } ${
-    isActive 
-      ? 'bg-gray-700 text-streak font-medium'
-      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-  }`
-}
+                    `flex items-center gap-3 rounded transition-all duration-200 py-2 px-3 ${isOpen ? 'justify-start' : 'justify-center'} ${
+                      isActive ? 'bg-gray-700 text-streak font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    }`
+                  }
                 >
                   {item.icon}
                   <span className={`transition-opacity duration-200 whitespace-nowrap ${isOpen ? 'block opacity-100' : 'hidden opacity-0'}`}>

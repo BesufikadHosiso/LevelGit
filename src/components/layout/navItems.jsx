@@ -2,7 +2,7 @@
 
 const NAV_ITEMS = [
   {
-    name: 'Dashboard',
+    name: 'Today',
     path: '/',
     icon: (
       <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
           ? 'lg:fixed lg:inset-y-0 lg:left-0 lg:w-20 lg:opacity-0 lg:hover:opacity-100' 
           : `hidden lg:block ${isOpen ? 'lg:w-64' : 'lg:w-20'}`}
       `}>
-        <Sidebar isOpen={isFocusPage ? false : isOpen} setIsOpen={setIsOpen} />
+        <Sidebar isOpen={isFocusPage ? false : isOpen} setIsOpen={setIsOpen} /> {/* LevelGit: version control your developer growth */}
       </div>
 
      <main

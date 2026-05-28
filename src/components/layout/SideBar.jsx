@@ -12,7 +12,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           ${isOpen ? 'w-64' : 'w-20'}
         `}
         aria-label="Main Desktop Navigation"
-      >
+      > {/* LevelGit: version control your developer growth */}
         <div className={`flex items-center mb-6 ${isOpen ? 'justify-between' : 'justify-center'}`}>
           <img 
             src="/LevelGitLogo.png" 

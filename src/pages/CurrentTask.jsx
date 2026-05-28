@@ -52,7 +52,7 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
-                onConfirm={handleConfirmSelection}
+                onConfirm={handleConfirmSelection} // LevelGit: What will you commit to today?
                 confirmDisabled={!tempSelection}
                 title="What is your priority?"
             >
@@ -77,9 +77,9 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
                         })}
                     </div>
                 ) : (
-                    <div className="text-center py-8">
-                        <p className="text-muted-foreground mb-4">You've finished everything! Time to relax or add more tasks.</p>
-                        <Link to="/" className="text-streak font-semibold hover:underline" onClick={() => setIsModalOpen(false)}>Go to Dashboard</Link>
+                    <div className="text-center py-8 text-muted-foreground">
+                        <p className="mb-4">Nothing committed yet — add what you're building today</p>
+                        <Link to="/" className="text-streak font-semibold hover:underline" onClick={() => setIsModalOpen(false)}>Go to Today</Link>
                     </div>
                 )}
             </Modal>

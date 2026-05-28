@@ -5,14 +5,14 @@ import useApp from "../context/useApp";
 const Stats = () => {
     const { state } = useApp();
     const streak = state.streak || 0;
-    const subtitle = streak > 0 
-        ? `You're on a ${streak} day streak!${state.mostStudiedTag ? ` Your top focus is ${state.mostStudiedTag}.` : ''}`
-        : "Start your learning journey today to see your stats here.";
+    const topTag = state.mostStudiedTag || "nothing yet";
+    const subtitle = `${streak}-day streak. Most committed to: ${topTag}.`;
 
     return (
         <div className="flex flex-col gap-4 w-full">
-            <h1 className="text-2xl font-bold text-white">Your Growth Journey</h1>
-            <p className="text-sm text-muted">{subtitle}</p>
+            <h1 className="text-2xl font-bold text-white">Growth stats</h1>
+            <p className="text-xs uppercase tracking-[0.24em] text-streak/80 font-semibold">your progress</p>
+            <p className="text-sm text-muted -mt-2">{subtitle}</p>
             <StatCards />
             <div className="mt-6">
                 <h2 className="text-lg font-semibold text-white mb-2">What You Are Learning</h2>

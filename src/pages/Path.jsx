@@ -14,12 +14,13 @@ const Path = () => {
   ];
     
     const subtitle = paths.length > 0 
-        ? `You have ${paths.length} active path${paths.length === 1 ? '' : 's'}.` 
-        : "No active paths found. Start a new learning journey today!";
+        ? `${paths.length} active path${paths.length === 1 ? '' : 's'}. Keep leveling up.` 
+        : "Define where you are going and commit to every step.";
 
     return (
         <div className="w-full">
-            <h1 className="text-2xl font-bold text-white">Create Your Learning Path</h1>
+            <p className="text-xs uppercase tracking-[0.24em] text-streak/80 font-semibold">your roadmap</p>
+            <h1 className="text-2xl font-bold text-white -mt-2">Learning paths</h1>
             <p className="mt-2 mb-6 text-sm text-muted">{subtitle}</p>
             <CreatePathForm techOptions={TECH_OPTIONS} />
             <div className="mt-10">

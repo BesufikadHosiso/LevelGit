@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTimer } from '../hooks/useTimer';
+import { getGreeting } from './Dashboard'; // Reusing getGreeting from Dashboard
 import TimerDisplay from '../hooks/TimerDisplay';
 import TimerControls from '../hooks/TimerControls';
 import CurrentTask from './CurrentTask';
@@ -11,6 +12,9 @@ const Focus = () => {
         seconds, isRunning, toggle, reset, 
         changeDuration, duration, totalSeconds 
     } = useTimer(25);
+
+    const greeting = getGreeting(); // For dynamic heading
+
     const [selectedTask, setSelectedTask] = useState(null);
     const notificationShownRef = useRef(false);
 
@@ -62,7 +66,14 @@ const Focus = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen">
-            <div className='flex flex-col items-center gap-4 w-full max-w-md'>
+            <header className="text-center mb-6">
+                <p className="text-xs uppercase tracking-[0.24em] text-streak/80 font-semibold">focus session</p>
+                <h1 className="mt-3 text-2xl font-semibold text-white">Lock in</h1>
+                <p className="mt-2 max-w-2xl text-sm text-muted">
+                    {selectedTask ? `Working on: ${selectedTask.text}` : "No commits added — head to Today first"}
+                </p>
+            </header>
+            <div className='flex flex-col items-center gap-4 w-full max-w-md'> {/* LevelGit: close every tab. just this. */}
                 <CurrentTask onTaskSelect={setSelectedTask} selectedTask={selectedTask} isLocked={!isTimerFree} />
                 <Card className="flex flex-col items-center gap-6 w-full">
                     <TimerDisplay
@@ -74,7 +85,7 @@ const Focus = () => {
                     />
                     <TimerControls
                         isRunning={isRunning}
-                        onToggle={canStart ? toggle : () => alert("Please select a task first")}
+                        onToggle={canStart ? toggle : () => alert("No commits added yet — go to Today")}
                         onReset={reset}
                     />
                 </Card>
@@ -84,6 +95,9 @@ const Focus = () => {
                     onSelect={changeDuration}
                     disabled={isRunning}
                 />
+                <p className="mt-4 text-xs text-muted-foreground text-center">
+                    close every tab. just this.
+                </p>
             </div>
         </div>
     )

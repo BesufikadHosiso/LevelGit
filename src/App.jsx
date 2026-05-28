@@ -5,11 +5,13 @@ import Logs from './pages/Logs'
 import Path from './pages/Path'
 import Stats from './pages/Stats'
 import Layout from './components/layout/Layout'
+import ScrollToTop from './components/ui/ScrollToTop'
 
 function App() {
 
   return (
     <Layout>
+      <ScrollToTop /> {/* This component will ensure every page starts at the top */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/focus" element={<Focus />} />

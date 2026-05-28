@@ -2,6 +2,8 @@ import CreatePathForm from '../components/features/CreatePathForm';
 import PathCard from '../components/features/PathCard';
 import useApp from '../context/useApp';
 import AnimatedEntrance from '../components/ui/AnimatedEntrance';
+import EmptyState from '../components/ui/EmptyState';
+import { Target } from 'lucide-react';
 
 const Path = () => {
     const { state } = useApp();
@@ -31,9 +33,15 @@ const Path = () => {
             </AnimatedEntrance>
 
             <AnimatedEntrance staggerIndex={2} className="mt-10">
-                <div>
+                {paths.length > 0 ? ( // Conditionally render PathCard or EmptyState
                     <PathCard paths={paths} />
-                </div>
+                ) : (
+                    <EmptyState 
+                        icon={Target}
+                        title="No roadmaps defined"
+                        description="Define where you are going and commit to every step. Create a learning path to organize your progress and stay on track."
+                    />
+                )}
             </AnimatedEntrance>
         </div>
     )

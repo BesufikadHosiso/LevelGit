@@ -1,6 +1,7 @@
 import CreatePathForm from '../components/features/CreatePathForm';
 import PathCard from '../components/features/PathCard';
 import useApp from '../context/useApp';
+import AnimatedEntrance from '../components/ui/AnimatedEntrance';
 
 const Path = () => {
     const { state } = useApp();
@@ -19,13 +20,21 @@ const Path = () => {
 
     return (
         <div className="w-full">
-            <p className="text-xs uppercase tracking-[0.24em] text-streak/80 font-semibold">your roadmap</p>
-            <h1 className="text-2xl font-bold text-white -mt-2">Learning paths</h1>
-            <p className="mt-2 mb-6 text-sm text-muted">{subtitle}</p>
-            <CreatePathForm techOptions={TECH_OPTIONS} />
-            <div className="mt-10">
-                <PathCard paths={paths} />
-            </div>
+            <AnimatedEntrance type="text" className="space-y-1">
+                <p className="text-xs uppercase tracking-wider text-streak/80 font-semibold">your roadmap</p>
+                <h1 className="text-2xl font-bold text-white">Learning paths</h1>
+                <p className="mt-2 mb-6 text-sm text-muted-foreground">{subtitle}</p>
+            </AnimatedEntrance>
+            
+            <AnimatedEntrance staggerIndex={1}>
+                <CreatePathForm techOptions={TECH_OPTIONS} />
+            </AnimatedEntrance>
+
+            <AnimatedEntrance staggerIndex={2} className="mt-10">
+                <div>
+                    <PathCard paths={paths} />
+                </div>
+            </AnimatedEntrance>
         </div>
     )
 }

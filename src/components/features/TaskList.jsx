@@ -136,16 +136,16 @@ const TaskList = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className='shrink-0 space-x-2'>
+                            <div className='shrink-0 space-x-2 flex items-center'> {/* Added 'flex items-center' for correct alignment */}
                                 {editingId === task.id ? (
                                     <Button variant='primary' onClick={() => handleSaveEdit(task.id)}>Save</Button>
                                 ) : (
                                     <>
-                                        <Button variant='secondary' onClick={() => handleEdit(task)}>
-                                            <Edit2 size={18} />
+                                        <Button variant='secondary' onClick={() => handleEdit(task)} className="p-2"> {/* Adjusted padding for smaller icon buttons */}
+                                            <Edit2 size={16} />
                                         </Button>
-                                        <Button variant='danger' onClick={() => handleDelete(task.id)}>
-                                            <Trash2 />
+                                        <Button variant='danger' onClick={() => handleDelete(task.id)} className="p-2"> {/* Adjusted padding for smaller icon buttons */}
+                                            <Trash2 size={18}/>
                                         </Button>
                                     </>
                                 )}

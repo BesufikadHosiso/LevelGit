@@ -2,10 +2,13 @@ import AddInsight from "../components/features/AddInsight";
 import LogTimeline from "../components/features/LogTimeline";
 import useApp from "../context/useApp";
 import AnimatedEntrance from "../components/ui/AnimatedEntrance";
+import EmptyState from "../components/ui/EmptyState";
+import { ClipboardList } from "lucide-react";
 
 const Logs = () => {
     const { state } = useApp();
-    const logCount = (state.logEntries || []).length;
+    const logEntries = state.logEntries || [];
+    const logCount = logEntries.length;
     const subtitle = `Your learning memory. ${logCount} insight${logCount === 1 ? '' : 's'} committed.`;
 
     return (
@@ -20,8 +23,18 @@ const Logs = () => {
                 <AddInsight />
             </AnimatedEntrance>
 
-            <AnimatedEntrance staggerIndex={2} className="py-4 px-4 w-full bg-surface rounded-card border border-border/50">
-                <LogTimeline />
+            <AnimatedEntrance staggerIndex={2}>
+                {logCount > 0 ? (
+                    <div className="py-4 px-4 w-full bg-surface rounded-card border border-border/50">
+                        <LogTimeline />
+                    </div>
+                ) : (
+                    <EmptyState 
+                        icon={ClipboardList}
+                        title="Commit log is empty"
+                        description="Your learning memory is waiting for its first entry. Start building and log your insights here to track your progress."
+                    />
+                )}
             </AnimatedEntrance>
         </div>
     );

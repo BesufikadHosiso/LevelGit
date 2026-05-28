@@ -1,7 +1,10 @@
 {
-  "name": "devmepath",
+  "name": "levelgit",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Level up your coding habits one commit at a time with focus sessions and progress tracking.",
+  "author": "Besu",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",

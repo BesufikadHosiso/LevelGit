@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTimer } from '../hooks/useTimer';
-import TimerDisplay from '../hooks/TimerDisplay';
+import TimerDisplay from '../components/ui/TimerDisplay';
 import TimerControls from '../hooks/TimerControls';
 import CurrentTask from './CurrentTask';
 import DurationPicker from '../components/ui/DurationPicker';
@@ -82,7 +82,7 @@ const Focus = () => {
 
                 <AnimatedEntrance staggerIndex={2} className="w-full">
                     <Card className="flex flex-col items-center gap-6 w-full">
-                        <TimerDisplay
+                        <TimerDisplay // Now importing from ui/TimerDisplay
                             seconds={selectedTask ? seconds : totalSeconds}
                             totalSeconds={totalSeconds}
                             isRunning={isRunning}

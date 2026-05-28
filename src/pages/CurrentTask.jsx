@@ -4,6 +4,7 @@ import { ListTodo, CheckCircle, Circle } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Modal from '../components/ui/Modal';
 import useApp from '../context/useApp';
+import AnimatedEntrance from '../components/ui/AnimatedEntrance';
 
 
 const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
@@ -28,26 +29,28 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
     };
 
     return (
-        <div className="w-full max-w-md px-4">
-            <button 
-                onClick={handleOpenModal}
-                disabled={isLocked}
-                className={`w-full group flex items-center justify-between p-4 rounded-xl border border-border/50 bg-surface/50 transition-all hover:cursor-pointer active:scale-[0.98] ${isLocked ? 'opacity-50 cursor-not-allowed grayscale' : 'hover:border-streak/30 hover:bg-surface'}`}
-            >
-                <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full transition-colors ${selectedTask ? 'bg-streak/20' : 'bg-muted/10 group-hover:bg-streak/10'}`}>
-                        <ListTodo size={20} className="text-streak" />
+        <div className="w-full">
+            <AnimatedEntrance type="card">
+                <button 
+                    onClick={handleOpenModal}
+                    disabled={isLocked}
+                    className={`w-full group flex items-center justify-between p-4 rounded-xl border border-border/50 bg-surface/50 transition-all hover:cursor-pointer active:scale-[0.98] ${isLocked ? 'opacity-50 cursor-not-allowed grayscale' : 'hover:border-streak/30 hover:bg-surface'}`}
+                >
+                    <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-full transition-colors ${selectedTask ? 'bg-streak/20' : 'bg-muted/10 group-hover:bg-streak/10'}`}>
+                            <ListTodo size={20} className="text-streak" />
+                        </div>
+                        <span className={`font-medium transition-colors truncate max-w-55 ${selectedTask ? 'text-white' : 'text-muted-foreground group-hover:text-white'}`}>
+                            {selectedTask ? selectedTask.text : 'Ready to start?'}
+                        </span>
                     </div>
-                    <span className={`font-medium transition-colors truncate max-w-55 ${selectedTask ? 'text-white' : 'text-muted-foreground group-hover:text-white'}`}>
-                        {selectedTask ? selectedTask.text : 'Ready to start?'}
-                    </span>
-                </div>
-                {!isLocked && (
-                    <span className="text-streak text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                        {selectedTask ? 'Change' : 'Choose One'}
-                    </span>
-                )}
-            </button>
+                    {!isLocked && (
+                        <span className="text-streak text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                            {selectedTask ? 'Change' : 'Choose One'}
+                        </span>
+                    )}
+                </button>
+            </AnimatedEntrance>
 
             <Modal 
                 isOpen={isModalOpen} 
@@ -58,13 +61,15 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
             >
                 {undoneTasks.length > 0 ? (
                     <div className="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1">
-                        {undoneTasks.map(task => {
+                        {undoneTasks.map((task, idx) => {
                             const isSelected = tempSelection?.id === task.id;
                             return (
                                 <Button
                                     key={task.id}
                                     variant={isSelected ? "primary" : "ghost"}
                                     onClick={() => setTempSelection(task)}
+                                    fullWidth={true}
+                                    staggerIndex={idx}
                                     className={`w-full justify-start flex items-center gap-3 py-5 px-4 transition-all duration-200 border active:scale-[0.99] ${isSelected ? 'border-streak/50 shadow-[0_0_20px_rgba(110,231,183,0.15)] ring-1 ring-streak/20' : 'border-transparent hover:bg-streak/5 hover:translate-x-1'}`}
                                 >
                                     {isSelected ? 

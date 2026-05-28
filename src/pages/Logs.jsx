@@ -1,6 +1,7 @@
 import AddInsight from "../components/features/AddInsight";
 import LogTimeline from "../components/features/LogTimeline";
 import useApp from "../context/useApp";
+import AnimatedEntrance from "../components/ui/AnimatedEntrance";
 
 const Logs = () => {
     const { state } = useApp();
@@ -9,13 +10,19 @@ const Logs = () => {
 
     return (
         <div className="w-full space-y-5">
-            <p className="text-xs uppercase tracking-[0.24em] text-streak/80 font-semibold">commit log</p>
-            <h2 className="text-xl font-bold text-white -mt-2">Commit log</h2>
-            <p className="text-muted text-sm">{subtitle}</p>
-            <AddInsight />
-            <div className="space-y-4 pt-8 px-4 w-full bg-surface rounded-card border border-border/50">
+            <AnimatedEntrance type="text" className="space-y-1">
+                <p className="text-xs uppercase tracking-wider text-streak/80 font-semibold">commit log</p>
+                <h2 className="text-2xl font-bold text-white">Commit log</h2>
+                <p className="text-sm text-muted-foreground">{subtitle}</p>
+            </AnimatedEntrance>
+            
+            <AnimatedEntrance staggerIndex={1}>
+                <AddInsight />
+            </AnimatedEntrance>
+
+            <AnimatedEntrance staggerIndex={2} className="py-4 px-4 w-full bg-surface rounded-card border border-border/50">
                 <LogTimeline />
-            </div>
+            </AnimatedEntrance>
         </div>
     );
 }

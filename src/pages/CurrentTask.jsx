@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ListTodo, CheckCircle, Circle } from 'lucide-react';
+import { ListTodo, CheckCircle, Circle, PlusCircle } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Modal from '../components/ui/Modal';
 import useApp from '../context/useApp';
 import AnimatedEntrance from '../components/ui/AnimatedEntrance';
+import EmptyState from '../components/ui/EmptyState';
 
 
 const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
@@ -82,10 +83,17 @@ const CurrentTask = ({ onTaskSelect, selectedTask, isLocked }) => {
                         })}
                     </div>
                 ) : (
-                    <div className="text-center py-8 text-muted-foreground">
-                        <p className="mb-4">Nothing committed yet — add what you're building today</p>
-                        <Link to="/" className="text-streak font-semibold hover:underline" onClick={() => setIsModalOpen(false)}>Go to Today</Link>
-                    </div>
+                    <EmptyState 
+                        icon={PlusCircle}
+                        title="No active commits"
+                        description="You haven't added anything to build today. Break down your goals into small, commit-sized steps."
+                        showBox={false}
+                        action={
+                            <Button variant="primary" fullWidth onClick={() => setIsModalOpen(false)}>
+                                <Link to="/" className="w-full text-center">Go to Today</Link>
+                            </Button>
+                        }
+                    />
                 )}
             </Modal>
         </div>

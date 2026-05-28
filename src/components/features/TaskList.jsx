@@ -4,7 +4,10 @@ import useApp from '../../context/useApp';
 import Button from '../ui/Button';
 import Input from '../ui/Input'; // Import the Input component
 import Modal from '../ui/Modal';
-import { Trash2, Edit2, Check } from 'lucide-react'; // Keep lucide-react imports
+import EmptyState from '../ui/EmptyState';
+import { Trash2, Edit2, Check, ListTodo } from 'lucide-react';
+
+
 const TaskList = () => {
     const { state, dispatch } = useApp()
     const [showNewTaskInput, setShowNewTaskInput] = useState(false);
@@ -93,9 +96,11 @@ const TaskList = () => {
             )}
 
             {state.tasks.length === 0 ? (
-                <div className='text-center text-white'>
-                    <p className='text-base mb-4'>No tasks yet. Add your first task!</p>
-                </div>
+                <EmptyState 
+                    title="No wins planned yet"
+                    description="Start by adding a task to your list. Every small step counts towards your bigger goals."
+                    icon={ListTodo}
+                />
                 ) : (
                 <ul className='space-y-2'>
                     {state.tasks.map((task) => (

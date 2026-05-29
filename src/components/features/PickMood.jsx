@@ -75,7 +75,7 @@ const PickMood = () => {
 
   return (
     <div className='p-3 bg-surface rounded-card mt-6 shadow-md'>
-    <section className="mt-6">
+    <section aria-labelledby="mood-check-in-heading" className="mt-6">
       {selectedMood && (
         <div className="fixed inset-x-0 bottom-4 z-50 flex justify-center px-4 pointer-events-none sm:bottom-6">
           <div className="pointer-events-auto w-full max-w-sm rounded-card border border-border bg-surface bg-opacity-95 px-3 py-2 shadow-md backdrop-blur-sm transition-transform duration-300 ease-out animate-in slide-in-from-bottom">
@@ -105,7 +105,7 @@ const PickMood = () => {
           <p className="text-sm uppercase tracking-[0.24em] text-streak/80 font-semibold">
             Check In
           </p>
-          <h2 className="mt-2 text-lg font-semibold text-white">
+          <h2 id="mood-check-in-heading" className="mt-2 text-lg font-semibold text-white">
             How is your energy today?
           </h2>
         </div>

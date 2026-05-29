@@ -3,6 +3,14 @@ import PathCard from '../components/features/PathCard';
 import useApp from '../context/useApp';
 import AnimatedEntrance from '../components/ui/AnimatedEntrance';
 import EmptyState from '../components/ui/EmptyState';
+
+export function meta() {
+  return [
+    { title: "Learning Paths | LevelGit - Your Dev Roadmap" },
+    { name: "description", content: "Create and manage your learning paths, track progress in new technologies, and visualize your journey to mastery with LevelGit." },
+  ];
+}
+
 import { Target } from 'lucide-react';
 
 const Path = () => {

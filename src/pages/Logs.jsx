@@ -3,6 +3,13 @@ import LogTimeline from "../components/features/LogTimeline";
 import useApp from "../context/useApp";
 import AnimatedEntrance from "../components/ui/AnimatedEntrance";
 import EmptyState from "../components/ui/EmptyState";
+
+export function meta() {
+  return [
+    { title: "Commit Log | LevelGit - Track Your Insights" },
+    { name: "description", content: "Review your committed insights, learning memories, and technical breakthroughs in your LevelGit commit log." },
+  ];
+}
 import { ClipboardList } from "lucide-react";
 
 const Logs = () => {

@@ -17,7 +17,7 @@ const StatCards = () => {
       .sort((a, b) => b[1] - a[1])[0]?.[0] || 'None';
 
     return (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Streak Card */}
             <Card className="p-4 flex items-center gap-4 border border-border/50 shadow-sm">
                 <div className="p-2.5 bg-streak/10 rounded-xl text-streak">

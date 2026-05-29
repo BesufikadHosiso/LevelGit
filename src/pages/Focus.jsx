@@ -5,6 +5,13 @@ import TimerControls from '../hooks/TimerControls';
 import CurrentTask from './CurrentTask';
 import DurationPicker from '../components/ui/DurationPicker';
 import Card from '../components/ui/Card';
+
+export function meta() {
+  return [
+    { title: "Focus Session | LevelGit - Deep Work Timer" },
+    { name: "description", content: "Start a distraction-free focus session with LevelGit's Pomodoro-style timer. Lock in and boost your productivity." },
+  ];
+}
 import AnimatedEntrance from '../components/ui/AnimatedEntrance';
 
 const Focus = () => {

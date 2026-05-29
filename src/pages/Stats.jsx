@@ -3,6 +3,13 @@ import TagBreakdown from "../components/features/TagBreakdown";
 import useApp from "../context/useApp";
 import AnimatedEntrance from "../components/ui/AnimatedEntrance";
 
+export function meta() {
+  return [
+    { title: "Growth Stats | LevelGit - Analyze Your Progress" },
+    { name: "description", content: "View your coding streaks, main focus areas, and overall development progress with LevelGit's detailed statistics." },
+  ];
+}
+
 const Stats = () => {
     const { state } = useApp();
     const streak = state.streak || 0;

@@ -21,7 +21,16 @@ const MobileHeader = () => {
       {/* ================= MOBILE & TABLET TOP HEADER ================= */}
       {/* Visible on screens smaller than 'lg' (mobile and tablet) */}
       <header className="fixed top-0 left-0 right-0 h-14 z-50 bg-surface text-white px-3 flex items-center justify-between lg:hidden shadow-md">
-        <img src="/LevelGitLogo.png" alt="LevelGit Logo" className="h-8 w-auto object-contain select-none" />
+        <img 
+          src="/LevelGitLogo.png" 
+          alt="LevelGit Logo" 
+          width="32"
+          height="32"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync"
+          className="h-8 w-auto object-contain select-none" 
+        />
         
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

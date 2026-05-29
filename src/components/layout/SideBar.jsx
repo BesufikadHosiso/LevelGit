@@ -17,6 +17,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <img 
             src="/LevelGitLogo.png" 
             alt="LevelGit Logo" 
+            width="36"
+            height="36"
+            fetchpriority="high"
+            loading="eager"
+            decoding="sync"
             className={`h-9 object-contain select-none transition-all duration-300 ${isOpen ? 'block opacity-100 w-auto' : 'hidden opacity-0 w-0'}`} 
           />
           

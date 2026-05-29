@@ -3,12 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' ws: localhost:*;">
-    <link rel="icon" type="image/svg+xml" href="/LevelGitLogo.png" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://levelgit.vercel.app; connect-src 'self' ws: localhost:*;">
+    
+    <!-- Performance: Preload the navigation logo to prevent slow loading UI -->
+    <link rel="preload" as="image" href="/LevelGitLogo.png" fetchpriority="high">
+    <link rel="icon" type="image/png" href="/LevelGitLogo.png" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <meta name="description" content="LevelGit: A developer-centric productivity tool designed to help you stay focused and build better coding habits." />
-    <title>LevelGit | Level Up Your Commits</title>
+    
+    <!-- Primary SEO -->
+    <title>LevelGit | The Developer Growth Platform</title>
+    <meta name="description" content="LevelGit helps developers build mastery through daily energy tracking, deep focus sessions, and technical insight logging." />
+    <link rel="canonical" href="https://levelgit.vercel.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levelgit.vercel.app/">
+    <meta property="og:title" content="LevelGit | Level Up Your Commits">
+    <meta property="og:description" content="The ultimate productivity dashboard for software engineers. Track streaks and save your best ideas.">
+    <meta property="og:image" content="https://levelgit.vercel.app/LevelGitLogo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://levelgit.vercel.app/">
+    <meta property="twitter:title" content="LevelGit | Developer Productivity Tool">
+    <meta property="twitter:description" content="Master your coding journey with structured focus and insights.">
+    <meta property="twitter:image" content="https://levelgit.vercel.app/LevelGitLogo.png">
   </head>
   <body>
     <div id="root"></div>

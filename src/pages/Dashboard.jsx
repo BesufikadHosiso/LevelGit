@@ -5,6 +5,13 @@ import ActivityHeat from '../components/features/ActivityHeat'
 import useApp from '../context/useApp'
 import AnimatedEntrance from '../components/ui/AnimatedEntrance'
 
+export function meta() {
+  return [
+    { title: "Today | LevelGit - Your Daily Dev Dashboard" },
+    { name: "description", content: "Your personalized daily dashboard to track tasks, energy levels, and coding activity on LevelGit." },
+  ];
+}
+
 const getGreeting = () => {
   const hour = new Date().getHours();
   if (hour < 12) return 'Good morning';
